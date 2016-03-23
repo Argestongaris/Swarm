@@ -1,0 +1,262 @@
+﻿<Page x:Class="SavePeople.MainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SavePeople"
+      mc:Ignorable="d" 
+      d:DesignHeight="475" d:DesignWidth="800"
+      Title="MainWindow">
+
+    <Grid ScrollViewer.HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Column="0" x:Name="tabControl" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" 
+                    ClipToBounds="True" SelectedIndex="0" TabStripPlacement="Left" IsSynchronizedWithCurrentItem="True" 
+                     Width="300" >
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <ContentPresenter Content="{TemplateBinding Content}">
+                                    <ContentPresenter.LayoutTransform>
+                                        <RotateTransform Angle="270" />
+                                    </ContentPresenter.LayoutTransform>
+                                </ContentPresenter>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Padding" Value="3" />
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Stats" Margin="0,0,-3,-4">
+                <DockPanel>
+                    <DockPanel Width="105" HorizontalAlignment="Left">
+                        <Label x:Name="labStatEn" Content="Energy:" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top"/>
+                        <Label x:Name="labStatsMeat" VerticalAlignment="Top" Content="Nutritient:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStatsHat" VerticalAlignment="Top" Content="Hatcheries:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStatLarv" Content="Larves:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStatLarvMax" Content="Max Larves:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStatSupplyEng" Content="Supplies in use:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStatSupplyMax" Content="Max supplies:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStatUnits" Content="Units:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+
+                    </DockPanel>
+                    <DockPanel HorizontalAlignment="Stretch">
+                        <Label x:Name="numStatEn" Content="NA2" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top"/>
+                        <Label x:Name="numStatsMeat" Content="NA" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStatsHat" Content="NA3" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStatLarv" Content="NA4" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStatLarvMax" Content="NA4" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStatSupplEng" Content="NA4" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStatSupplyMax" Content="NA4" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStatUnits" Content="NA4" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                    </DockPanel>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Structures">
+                <DockPanel>
+                    <DockPanel Width="105" HorizontalAlignment="Left">
+                        <Label x:Name="labStrucHat" Content="Hatcheries:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucEn" Content="Energy(Hatch):" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--Can acces after building hatchery-->
+                        <Label x:Name="labStrucSpPool" Content="Spawning pools:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucExtractor" Content="Extractors:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucEvChamber" Content="Evolut. chamber:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--Can acces after building spawning pool-->
+                        <Label x:Name="labStrucRoachWarren" Content="Roach Warrens:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucBenelingNest" Content="Beneling nests:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucSpineCraw" Content="Spine crawlers:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucSporeCraw" Content="Spore crawlers:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--Can acces after evolution hatchery into a Lair-->
+                        <Label x:Name="labStrucLair" Content="Lairs:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucHydrDen" Content="Hydralisk den:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucNydusNet" Content="Nydus networks:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucInfecPit" Content="Infection pits:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucSpire" Content="Spires:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--Can acces after evolution hatchery into a Hive-->
+                        <Label x:Name="labStrucHive" Content="Hives:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labStrucUltrCav" Content="Ultralisk Caverns:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--Can acces after building a spire-->
+                        <Label x:Name="labStrucGrSpire" Content="Greater spires:" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                    </DockPanel>
+                    <DockPanel HorizontalAlignment="Stretch">
+                        <Label x:Name="numStrucHat" Content="Hatcheries" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucEn" Content="Energy" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucSpPool" Content="Spawning pool" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucExtr" Content="Extractor" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucEvChamber" Content="Evolution chamber" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucRoachWarren" Content="Roach Warren" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucBenNest" Content="Beneling nest" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucSpineCr" Content="Spine cravler" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucSporeCr" Content="Spore crawler" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucLair" Content="Lair" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucHydDen" Content="Hydralisk den" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucNydNet" Content="Nydus network" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucInfecPit" Content="Investation pit" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucSpire" Content="Spire" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucHive" Content="Hive" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucUltCav" Content="Ultralisk cavern" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numStrucGrSpire" Content="Greater spire" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                    </DockPanel>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Resources">
+                <DockPanel>
+                    <DockPanel Width="105" HorizontalAlignment="Left">
+                        <Label x:Name="labResOvEn" Content="Energy(Ov):" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top"/>
+                        <Label x:Name="labResOvEnGain" Content="Energy gain (Ov):" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top"/>
+                        <Label x:Name="labResEnAll" VerticalAlignment="Top" Content="Energy(All):" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labResMeat" VerticalAlignment="Top" Content="Nutritient:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labResCreep" Content="Creep gain:" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labResCrNut" Content="Creep nutrit gain:" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labResCrEn" Content="Creep energy gain:" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labResSupplyEng" Content="Supply in use:" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labResSupplyMax" Content="All supplies:" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top" Visibility="Hidden"/>
+                    </DockPanel>
+                    <DockPanel HorizontalAlignment="Stretch">
+                        <Label x:Name="numResOvEn" Content="NA5" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top"/>
+                        <Label x:Name="numResOvEnGain" Content="NA6" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top"/>
+                        <Label x:Name="numResAllEn" Content="NA7" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numResMeat" Content="NA" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numResCreep" Content="NA2" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numResCrMeat" Content="NA3" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numResCrEn" Content="NA4" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numResSupplyEng" Content="NA4" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numResSupplyMax" Content="NA4" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                    </DockPanel>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Units">
+                <DockPanel>
+                    <DockPanel Width="105" HorizontalAlignment="Left">
+                        <Label x:Name="labUnitOv" VerticalAlignment="Top" Content="Overmind:" HorizontalAlignment="Left" DockPanel.Dock="Top" MouseDown="labUnitOv_MouseDown"/>
+                        <Label x:Name="labUnitLarv" Content="Larves:" VerticalAlignment="Top" RenderTransformOrigin="0.407,-1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitDrones" VerticalAlignment="Top" Content="Drones:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--Needs hatchery-->
+                        <Label x:Name="labUnitOverlord" VerticalAlignment="Top" Content="Overlords:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--Needs spawning pool-->
+                        <Label x:Name="labUnitZergling" VerticalAlignment="Top" Content="Zerglings:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitQueen" VerticalAlignment="Top" Content="Queens:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitRoach" VerticalAlignment="Top" Content="Roaches:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitBeneling" VerticalAlignment="Top" Content="Benelings:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--needs lair-->
+                        <Label x:Name="labUnitHydralisk" VerticalAlignment="Top" Content="Hydralisks:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitInfes" VerticalAlignment="Top" Content="Infestors:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitMutalisk" VerticalAlignment="Top" Content="Mutaliks:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitNydWorm" VerticalAlignment="Top" Content="Nydus worms:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitSwarmHost" VerticalAlignment="Top" Content="Swarm hosts:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitOverseer" VerticalAlignment="Top" Content="Overseers:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitCoruptor" VerticalAlignment="Top" Content="Coruptors:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <!--needs hive-->
+                        <Label x:Name="labUnitUltra" VerticalAlignment="Top" Content="Ultralisks:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitViper" VerticalAlignment="Top" Content="Vipers:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="labUnitBrLord" VerticalAlignment="Top" Content="Brood lords:" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                    </DockPanel>
+                    <DockPanel HorizontalAlignment="Stretch">
+                        <Label x:Name="numUnitOv" Content="1" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Top"/>
+                        <Label x:Name="numUnitLarv" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitDrones" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitOverlord" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitZergling" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitQueen" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitRoach" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitBeneling" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitHydra" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitInfes" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitMutalisk" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitNydWorm" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitSwarmHost" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitOverseer" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitCoruptor" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitUltralisk" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitViper" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                        <Label x:Name="numUnitBrLord" Content="NA" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top" Visibility="Hidden"/>
+                    </DockPanel>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+        <!--Overmind-->
+        <StackPanel Name="OvPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+            <Button x:Name="button" Content="Spawn larve (50en)" HorizontalAlignment="Left" Width="160" Click="button_Click"/>
+            <Button x:Name="button1" Content="Mutate Drone (50en,1 larve)" HorizontalAlignment="Left" Margin="0,10,0,0" Width="160" IsEnabled="False"/>
+            <StackPanel Height="46" Margin="0,10,0,0" Orientation="Horizontal">
+                <ProgressBar VerticalAlignment="Top" Height="20" Width="160" MinWidth="200" MinHeight="20" HorizontalAlignment="Center" VerticalContentAlignment="Bottom" Margin="0,10,0,0" SmallChange="1" Value="70"/>
+                <Label x:Name="label" Content="Energy/max" Margin="10,10,0,0" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
+            </StackPanel>
+        </StackPanel>
+        <!--Larva-->
+        <StackPanel Name="LarvPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Drone-->
+        <StackPanel Name="DronPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Overlord-->
+        <StackPanel Name="OvLdPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--zergling-->
+        <StackPanel Name="ZergPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Queen-->
+        <StackPanel Name="QueenPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Roach-->
+        <StackPanel Name="RoachPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Beneling-->
+        <StackPanel  Name="BenPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Hydralisk-->
+        <StackPanel Name="HydPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Infestor-->
+        <StackPanel Name="InfPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Mutalisk-->
+        <StackPanel Name="MutPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Nydus Worm-->
+        <StackPanel Name="NydWPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Swarm host-->
+        <StackPanel Name="SwHPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Overseer-->
+        <StackPanel Name="OvSPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Coruptor-->
+        <StackPanel Name="CorPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Ultralisk-->
+        <StackPanel Name="UltPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Viper-->
+        <StackPanel Name="VipPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+        <!--Brood lord-->
+        <StackPanel Name="BrLoPanel" Grid.Column="1" Margin="0" CanVerticallyScroll="True" Visibility="Hidden">
+
+        </StackPanel>
+    </Grid>
+</Page>
+
+                    
